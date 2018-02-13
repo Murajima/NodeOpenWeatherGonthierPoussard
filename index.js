@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const Weather = require('./controllers/controllerVille.js')
 const program = require('commander')
 const inquirer = require('inquirer')
 const { exec } = require('child_process')
@@ -18,7 +19,7 @@ if (program.favori) {
 } else if (program.historique) {
  console.log('Hello all!')
 } else if (program.ville) {
- console.log(`Hello ${program.ville}!`)
+ Weather.getWeather(program.ville)
 } else {
  program.help()
 }
