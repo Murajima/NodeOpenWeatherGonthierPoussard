@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const Weather = require('./controllers/controllerVille.js')
 const Favoris = require('./controllers/controllerFavoris.js')
+const Historique = require('./controllers/controllerHistorique.js')
 const program = require('commander')
 const inquirer = require('inquirer')
 const { exec } = require('child_process')
@@ -17,13 +18,13 @@ program
 program.parse(process.argv)
 // Maintenant on peut les utiliser
 if (program.favori) {
- console.log('Hello world!')
+	Favoris.showFav()
 } else if (program.historique) {
- console.log('Hello all!')
+	Historique.showHistory()
 } else if (program.ville) {
- Weather.getWeather(program.ville)
+	Weather.getWeather(program.ville)
 } else if (program.addFav) {
 	Favoris.addFav(program.addFav)
 } else {
- program.help()
+	program.help()
 }
