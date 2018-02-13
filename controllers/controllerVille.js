@@ -1,8 +1,13 @@
 const request = require('request')
+const Models = require('../models/models.js')
+const db = require('../db.js')
 
 function getWeather(ville){
   apiCall(ville).then((result)=>{
     console.log(result)
+    InsertInto(result).then((result) =>{
+      console.log(result)
+    })
   })
 }
 
@@ -25,5 +30,22 @@ function apiCall(ville){
       resolve(dict)
     })
   })
+}
+
+function InsertInto(jsonObj) {
+    return new Promise((resolve,reject) => {
+        Models.Historique.create({
+            Nom: jsonObj.name,
+            Pays: jsonObj.country,
+            Latitude: jsonObj.lat,
+            Longitude: jsonObj.lon,
+            Temps: jsonObj.main,
+            TempsDesc: jsonObj.description,
+            Temperature: jsonObj.temp,
+            Vent: jsonObj.windSpeed
+        }).then(() => {
+            resolve("data saved")
+        })
+    })
 }
 module.exports = {getWeather}

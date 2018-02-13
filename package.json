@@ -22,7 +22,9 @@
     "commander": "^2.14.1",
     "inquirer": "^5.1.0",
     "lodash": "^4.17.5",
-    "request": "^2.83.0"
+    "mysql2": "^1.5.2",
+    "request": "^2.83.0",
+    "sequelize": "^4.33.4"
   },
   "bin": {
     "openweather": "./index.js"
