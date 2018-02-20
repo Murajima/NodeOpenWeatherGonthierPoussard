@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const Historique = require('./controllers/controllerHistorique.js')
 const Favoris = require('./controllers/controllerFavoris.js')
+const DisplayHist = require('./View/History/mainHistoryView.js')
 const DisplayAddFav = require('./View/Favoris/mainFavView.js')
 const DisplayVille = require('./View/searchVilleView.js')
 const program = require('commander')
@@ -21,7 +22,7 @@ program.parse(process.argv)
 if (program.favori) {
 	Favoris.showFav()
 } else if (program.historique) {
-	Historique.showHistory()
+	DisplayHist.display()
 } else if (program.ville) {
 	DisplayVille.display()
 } else if (program.addFav) {

@@ -15,4 +15,21 @@ function getHistory () {
 	})
 }
 
-module.exports = {showHistory}
+function delHistory() {
+	DeleteHist().then((result) => {
+			console.log(result)
+	})
+}
+
+function DeleteHist () {
+    return new Promise((resolve,reject) => {
+        Models.Historique.destroy({
+					where: {},
+  				truncate: true
+        }).then(() => {
+            resolve("data deleted")
+        })
+    })
+}
+
+module.exports = { showHistory, delHistory }
