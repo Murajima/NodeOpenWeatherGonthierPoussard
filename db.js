@@ -2,7 +2,7 @@ const Sequelize = require('sequelize')
 const db = new Sequelize('NodeCLI', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
-  //port: 8889,
+  port: 8889,
   logging: false,
 
   pool: {
@@ -16,7 +16,7 @@ const db = new Sequelize('NodeCLI', 'root', 'root', {
 db
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);

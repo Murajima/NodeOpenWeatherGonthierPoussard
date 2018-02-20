@@ -1,18 +1,18 @@
 #!/usr/bin/env node
-const Weather = require('./controllers/controllerVille.js')
-const Favoris = require('./controllers/controllerFavoris.js')
 const Historique = require('./controllers/controllerHistorique.js')
+const Favoris = require('./controllers/controllerFavoris.js')
+const DisplayAddFav = require('./View/addFavView.js')
+const DisplayVille = require('./View/searchVilleView.js')
 const program = require('commander')
-const inquirer = require('inquirer')
 const { exec } = require('child_process')
-var joi = require('joi')
+
 
 // Configuration des paramètres attendus
 program
  .version('1.0.0')
  .option('-f, --favori', 'Show favori')
  .option('-h, --historique', 'Show historique')
- .option('-v, --ville [name]', 'Search ville')
+ .option('-v, --ville', 'Search ville')
  .option('-a, --addFav', 'Add a favorite city')
 // On parse (convertit en format utilisable) les options
 // fonction synchrone
@@ -23,36 +23,9 @@ if (program.favori) {
 } else if (program.historique) {
 	Historique.showHistory()
 } else if (program.ville) {
-	Weather.getWeather(program.ville)
+	DisplayVille.display()
 } else if (program.addFav) {
-  function processAnswers(answers){
-    Favoris.addFav(answers.ville)
-  }
-
-  function validateVille(ville) {
-    var valid
-    joi.validate(ville, joi.string().required(), function(err,val) {
-       if (err) {
-         console.log(err.message)
-         valid = err.message
-       }
-       else {
-         valid = true
-       }
-   })
-   return valid
- }
- 
-  inquirer.prompt([{
-      message: "Quel ville souhaitez vous ajouter a vos favoris ?",
-      type: "input",
-      name: "ville",
-      validate: validateVille,
-  }]).then((answers) => processAnswers(answers))
-
-
-
-
+  DisplayAddFav.display()
 } else {
 	program.help()
 }
