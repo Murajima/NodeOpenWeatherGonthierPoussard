@@ -1,4 +1,5 @@
 const Favoris = require('../../controllers/controllerFavoris.js')
+const DisplayAddFav = require('./mainFavView.js')
 const inquirer = require('inquirer')
 const joi = require('joi')
 

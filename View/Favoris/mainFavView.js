@@ -21,7 +21,11 @@ function processAnswers(answers){
   }
 }
 
-function display() {
+function toto () {
+  console.log('toto')
+}
+
+function display () {
   inquirer.prompt([{
     type: "list",
     name: "choixFav",
@@ -34,4 +38,4 @@ function display() {
     }]).then((answers) => processAnswers(answers))
 }
 
-module.exports = { display }
+module.exports = { display, toto }
