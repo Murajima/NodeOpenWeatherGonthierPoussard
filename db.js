@@ -2,7 +2,8 @@ const Sequelize = require('sequelize')
 const db = new Sequelize('NodeCLI', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql',
-  port: 8889,
+  //port: 8889,
+  logging: false,
 
   pool: {
     max: 5,

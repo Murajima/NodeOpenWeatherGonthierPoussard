@@ -21,6 +21,7 @@
     "child_process": "^1.0.2",
     "commander": "^2.14.1",
     "inquirer": "^5.1.0",
+    "joi": "^13.1.2",
     "lodash": "^4.17.5",
     "mysql2": "^1.5.2",
     "request": "^2.83.0",
