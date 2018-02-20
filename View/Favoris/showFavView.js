@@ -8,6 +8,7 @@ function processAnswers(answers){
     process.exit()
   } else {
     Ville.getWeather(answers.choixFav)
+    process.exit()
   }
 }
 

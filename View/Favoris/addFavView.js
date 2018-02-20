@@ -5,6 +5,7 @@ const joi = require('joi')
 
 function processAnswers(answers){
   Favoris.addFav(answers.ville)
+  process.exit()
 }
 
 function validateVille(ville) {

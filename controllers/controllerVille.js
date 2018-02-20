@@ -4,11 +4,21 @@ const db = require('../db.js')
 
 function getWeather(ville){
   apiCall(ville).then((result)=>{
-    console.log(result)
+    display(result)
     InsertInto(result).then((result) =>{
       console.log(result)
     })
   })
+}
+
+function display(result) {
+  console.log(result.name + ' / ' + result.country)
+  console.log('   longitude:       ' + result.lon)
+  console.log('   latitude:        ' + result.lat)
+  console.log('   main:            ' + result.main)
+  console.log('   description:     ' + result.description)
+  console.log('   température:     ' + result.temp)
+  console.log('   vitesse du vent: ' + result.windSpeed)
 }
 
 function apiCall(ville){
