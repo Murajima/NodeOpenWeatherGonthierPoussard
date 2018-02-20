@@ -1,4 +1,4 @@
-const Favoris = require('../controllers/controllerFavoris.js')
+const Favoris = require('../../controllers/controllerFavoris.js')
 const inquirer = require('inquirer')
 const joi = require('joi')
 

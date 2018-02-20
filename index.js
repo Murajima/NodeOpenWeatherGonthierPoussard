@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const Historique = require('./controllers/controllerHistorique.js')
 const Favoris = require('./controllers/controllerFavoris.js')
-const DisplayAddFav = require('./View/addFavView.js')
+const DisplayAddFav = require('./View/Favoris/mainFavView.js')
 const DisplayVille = require('./View/searchVilleView.js')
 const program = require('commander')
 const { exec } = require('child_process')

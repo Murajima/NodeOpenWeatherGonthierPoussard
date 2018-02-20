@@ -13,6 +13,12 @@ function showFav () {
     })
 }
 
+function delFav (fav) {
+    DeleteFav(fav).then((result) => {
+        console.log(result)
+    })
+}
+
 function getFav () {
     return new Promise((resolve,reject) => {
         db.query("SELECT * FROM `favoris`", { type: db.QueryTypes.SELECT}).then(favoris => {
@@ -21,7 +27,7 @@ function getFav () {
     })
 }
 
-function InsertInto(fav) {
+function InsertInto (fav) {
     return new Promise((resolve,reject) => {
         Models.Favoris.create({
             Ville: fav
@@ -31,4 +37,16 @@ function InsertInto(fav) {
     })
 }
 
-module.exports = {addFav, showFav}
+function DeleteFav (fav) {
+    return new Promise((resolve,reject) => {
+        Models.Favoris.destroy({
+            where: {
+                Ville: fav
+            }
+        }).then(() => {
+            resolve("data deleted")
+        })
+    })
+}
+
+module.exports = {addFav, showFav, delFav, getFav}
