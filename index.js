@@ -1,4 +1,5 @@
 #!/usr/bin/env node --no-deprecation --no-warnings
+const Import = require('./controllers/controllerImportDB.js')
 const Historique = require('./controllers/controllerHistorique.js')
 const Favoris = require('./controllers/controllerFavoris.js')
 const Export = require('./controllers/controllerExportDB.js')
@@ -24,18 +25,21 @@ program
  .option('-H, --historique', 'Show historique')
  .option('-v, --ville', 'Search ville')
  .option('-e, --export', 'Export the Database')
+ .option('-i, --import', 'Import Database from JSON files')
 // On parse (convertit en format utilisable) les options
 // fonction synchrone
 program.parse(process.argv)
 // Maintenant on peut les utiliser
 if (program.favori) {
-    DisplayFav.display()
+  DisplayFav.display()
 } else if (program.historique) {
-    DisplayHist.display()
+  DisplayHist.display()
 } else if (program.ville) {
-    DisplayVille.display()
+  DisplayVille.display()
 } else if (program.export) {
-    Export.exportDB()
+  Export.exportDB()
+} else if (program.import) {
+  Import.importDB()
 } else {
     program.help()
 }

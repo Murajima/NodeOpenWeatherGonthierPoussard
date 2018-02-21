@@ -31,6 +31,7 @@ function getFav () {
 
 function InsertInto (fav) {
     return new Promise((resolve,reject) => {
+        console.log(fav)
         Models.Favoris.create({
             Ville: fav
         }).then(() => {
@@ -51,4 +52,4 @@ function DeleteFav (fav) {
     })
 }
 
-module.exports = {addFav, showFav, delFav, getFav}
+module.exports = {addFav, showFav, delFav, getFav, InsertInto}

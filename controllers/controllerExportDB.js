@@ -4,12 +4,15 @@ var Historique = require('./controllerHistorique.js')
 
 function exportFavoris (result) {
   let json = JSON.stringify(result)
-  fs.writeFile('./utils/Favoris.json', json, 'utf8')
+  fs.writeFileSync('./utils/Favoris.json', json, 'utf8')
 }
 
 function exportHistorique (result) {
-  let json = JSON.stringify(result)
-  fs.writeFile('./utils/Ville.json', json, 'utf8')
+  return new Promise ((resolve, reject) => {
+    let json = JSON.stringify(result)
+    fs.writeFileSync('./utils/Ville.json', json, 'utf8')
+    resolve("History exported")
+  })
 }
 
 function getFav () {
@@ -26,9 +29,10 @@ function exportDB () {
   getFav().then((result) => {
     console.log(result)
     Historique.getHistory().then((result) => {
-      exportHistorique(result)
-      console.log("History exported")
-      process.exit()
+      exportHistorique(result).then((result) => {
+        console.log(result)
+        process.exit()
+      })
     })
   })
 

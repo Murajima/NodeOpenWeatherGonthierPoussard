@@ -30,6 +30,23 @@ function getHistory () {
     })
 }
 
+function InsertInto (nom, pays, latitude, longitude, temps, tempsDesc, temperature, vent) {
+    return new Promise((resolve,reject) => {
+        Models.Historique.create({
+            Nom: nom,
+            Pays: pays,
+            Latitude: latitude,
+            Longitude: longitude,
+            Temps: temps,
+            TempsDesc: tempsDesc,
+            Temperature: temperature,
+            Vent: vent
+        }).then(() => {
+            resolve("data saved")
+        })
+    })
+}
+
 function delHistory() {
     DeleteHist().then((result) => {
       console.log(result)
@@ -48,4 +65,4 @@ function DeleteHist () {
     })
 }
 
-module.exports = { showHistory, delHistory, getHistory }
+module.exports = { showHistory, delHistory, getHistory, InsertInto }
