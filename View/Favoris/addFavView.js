@@ -5,7 +5,7 @@ const joi = require('joi')
 
 function processAnswers(answers){
   Favoris.addFav(answers.ville)
-  process.exit()
+  //process.exit()
 }
 
 function validateVille(ville) {
@@ -32,5 +32,3 @@ function display() {
 }
 
 module.exports = { display }
-
-
