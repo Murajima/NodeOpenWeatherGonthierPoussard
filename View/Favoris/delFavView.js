@@ -7,7 +7,6 @@ function processAnswers(answers){
     process.exit()
   } else {
     Favoris.delFav(answers.choixFav)
-    process.exit()
   }
 }
 
@@ -36,5 +35,3 @@ function display() {
 }
 
 module.exports = { display }
-
-
