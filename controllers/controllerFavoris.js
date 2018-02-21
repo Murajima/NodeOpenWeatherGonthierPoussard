@@ -4,6 +4,7 @@ const db = require('../db.js')
 function addFav (fav) {
   InsertInto(fav).then((result) => {
     console.log(result)
+    process.exit()
   })
 }
 
@@ -16,6 +17,7 @@ function showFav () {
 function delFav (fav) {
     DeleteFav(fav).then((result) => {
         console.log(result)
+        process.exit()
     })
 }
 

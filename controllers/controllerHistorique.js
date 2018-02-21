@@ -32,8 +32,8 @@ function getHistory () {
 
 function delHistory() {
     DeleteHist().then((result) => {
-            console.log(result)
-            process.exit()
+      console.log(result)
+      process.exit()
     })
 }
 
